@@ -1,6 +1,7 @@
 package com.github.vioao.wechat.utils.serialize.jackson;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
@@ -29,6 +30,7 @@ public class JacksonSerialize implements SerializeDelegate {
         OBJECT_MAPPER = new ObjectMapper();
         OBJECT_MAPPER.setPropertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE);
         OBJECT_MAPPER.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        OBJECT_MAPPER.configure(JsonParser.Feature.ALLOW_UNQUOTED_CONTROL_CHARS,true);
         OBJECT_MAPPER.setSerializationInclusion(JsonInclude.Include.NON_NULL);
 
         JacksonXmlModule module = new JacksonXmlModule();
