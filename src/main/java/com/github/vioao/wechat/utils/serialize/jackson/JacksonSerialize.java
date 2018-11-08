@@ -30,6 +30,7 @@ public class JacksonSerialize implements SerializeDelegate {
         OBJECT_MAPPER = new ObjectMapper();
         OBJECT_MAPPER.setPropertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE);
         OBJECT_MAPPER.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        //Illegal unquoted character ((CTRL-CHAR, code 20)): has to be escaped using backslash to be included in string value
         OBJECT_MAPPER.configure(JsonParser.Feature.ALLOW_UNQUOTED_CONTROL_CHARS,true);
         OBJECT_MAPPER.setSerializationInclusion(JsonInclude.Include.NON_NULL);
 
